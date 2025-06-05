@@ -1,6 +1,6 @@
 .all {
   display: block;
-  background-image: url(./images/WP.jpg);
+  background-image: url(../images/WP.jpg);
   background-size: cover;
   position: fixed;
   top: 0px;

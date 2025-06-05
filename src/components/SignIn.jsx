@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SignIn.module.css";
+import styles from "../styles/SignIn.module.css";
 import {
   FaLaptop,
   FaNetworkWired,
@@ -26,12 +26,12 @@ function SignIn() {
             <div className={styles.info}>
               <label className={styles.labels}>Email Address</label>
               <br />
-              <input className={styles.inputs} type="email" required></input>
+              <input className={styles.inputs} type="email" required />
             </div>
             <div className={styles.info}>
               <label className={styles.labels}>Password</label>
               <br />
-              <input className={styles.inputs} type="password" required></input>
+              <input className={styles.inputs} type="password" required />
             </div>
             <button className={styles.submit}>Submit</button>
           </div>

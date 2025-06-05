@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Login";
-import SignIn from "./SignIn";
+import Login from "./components/Login";
+import SignIn from "./components/SignIn";
+import FileUploader from "./components/FileUploader";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/" element={<FileUploader />} />
       </Routes>
     </Router>
   );

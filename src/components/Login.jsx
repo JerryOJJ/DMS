@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./Login.module.css";
+import styles from "../styles/Login.module.css";
 
 function Login() {
   return (
@@ -9,13 +9,13 @@ function Login() {
         <h2 className={styles.title}>login</h2>
         <div className={styles.wrapper}>
           <div className={styles.inputdata}>
-            <input className={styles.inputs} type="email" required></input>
+            <input className={styles.inputs} type="email" required />
             <label className={styles.labels}>Email</label>
           </div>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.inputdata}>
-            <input className={styles.inputs} type="password" required></input>
+            <input className={styles.inputs} type="password" required />
             <label className={styles.labels}>Password</label>
           </div>
         </div>
