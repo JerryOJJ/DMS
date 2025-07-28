@@ -1,47 +1,42 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { FaUpload } from "react-icons/fa";
-import styles from "../styles/FileUploader.module.css";
+import React, { useState } from 'react';
+import { Client, ID, Storage } from 'appwrite';
+import { FaUpload } from 'react-icons/fa';
+import styles from '../styles/FileUploader.module.css';
 
 function FileUploader() {
   const [file, setFile] = useState(null);
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState('idle');
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  //     ~Accepts all files~
-  //   function handleFileChange(e) {
-  //     if (e.target.files) {
-  //       setFile(e.target.files[0]);
-  //     }
-  //   }
-
-  //   ~Accepts only pdf & docx files~
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    if (
-      selectedFile &&
-      (selectedFile.type === "application/pdf" ||
-        selectedFile.name.endsWith(".docx"))
-    ) {
-      setFile(selectedFile);
-    } else {
-      alert("Only PDF or DOCX files are allowed");
+  function handleFileChange(e) {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
     }
-  };
+  }
 
-  async function handleFileUpload() {
-    if (!file) return;
+  const handleFileUpload = async () => {
+    if (!file) {
+      alert('Please select a file first!');
+      return;
+    }
 
-    setStatus("uploading");
+    //APPWRITE
+    const client = new Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject('6878fa3b002c3376bb13');
+
+    const storage = new Storage(client);
+
+    setStatus('uploading');
     setUploadProgress(0);
-    const formData = new FormData();
-    formData.append("file", file);
 
     try {
-      await axios.post("https://httpbin.org/post", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const promise = await (storage.createFile(
+        '6878faea0025c2234e78',
+        ID.unique(),
+        file
+      ),
+      {
         onUploadProgress: (ProgressEvent) => {
           const progress = ProgressEvent.total
             ? Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
@@ -49,14 +44,17 @@ function FileUploader() {
           setUploadProgress(progress);
         },
       });
+      console.log(promise);
 
-      setStatus("success");
+      setStatus('success');
       setUploadProgress(100);
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      console.log(error.message);
+
+      setStatus('failed');
       setUploadProgress(0);
     }
-  }
+  };
 
   return (
     <div className={styles.all}>
@@ -66,7 +64,7 @@ function FileUploader() {
           <FaUpload className={styles.icon} />
           <br />
           <h3 className={styles.inputText}>Select files to upload</h3>
-          <p className={styles.inputParagraph}>PDF and DOCX formats.</p>
+          {/* <p className={styles.inputParagraph}>PDF and DOCX formats.</p> */}
 
           <input
             className={styles.input}
@@ -83,21 +81,21 @@ function FileUploader() {
             </div>
           )}
 
-          {file && status !== "uploading" && (
+          {file && status !== 'uploading' && (
             <button className={styles.uploadButton} onClick={handleFileUpload}>
               Upload
             </button>
           )}
         </div>
 
-        {status === "uploading" && (
-          <div style={{ marginTop: "10px" }}>
-            <div style={{ width: "100%", height: "10px" }}>
+        {status === 'uploading' && (
+          <div style={{ marginTop: '10px' }}>
+            <div style={{ width: '100%', height: '10px' }}>
               <div
                 style={{
                   width: `${uploadProgress}%`,
-                  height: "10px",
-                  backgroundColor: "blueviolet",
+                  height: '10px',
+                  backgroundColor: 'blueviolet',
                   transition: 100,
                 }}
               ></div>
@@ -106,12 +104,12 @@ function FileUploader() {
           </div>
         )}
 
-        {status === "success" && (
-          <p style={{ color: "blueviolet" }}>File uploaded successfully!</p>
+        {status === 'success' && (
+          <p style={{ color: 'blueviolet' }}>File uploaded successfully!</p>
         )}
 
-        {status === "error" && (
-          <p style={{ color: "red" }}>File upload failed. Please try again.</p>
+        {status === 'error' && (
+          <p style={{ color: 'red' }}>File upload failed. Please try again.</p>
         )}
       </div>
     </div>

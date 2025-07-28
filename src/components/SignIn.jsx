@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "../styles/SignIn.module.css";
+import React from 'react';
+import styles from '../styles/SignIn.module.css';
 import {
   FaLaptop,
   FaNetworkWired,
   FaFileAlt,
   FaGlobe,
   FaShareSquare,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 function SignIn() {
   return (

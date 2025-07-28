@@ -1,0 +1,73 @@
+.all {
+  background-color: white;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.searchWrapper {
+  background-color: white;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  color: black;
+  border: 1px solid black;
+  padding: 10px 9px 9px 9px;
+}
+
+.input {
+  width: 50%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid black;
+  outline: none;
+}
+
+.input::placeholder {
+  color: black;
+}
+
+.titleContainer {
+  margin: 35px 10px;
+  padding: 20px;
+  background-color: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  color: white;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.ancor {
+  color: black;
+}
+
+.ancor:hover {
+  color: red;
+}
