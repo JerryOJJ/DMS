@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .all {
   background-color: rgb(228, 227, 227);
   position: fixed;
@@ -22,7 +22,7 @@
 }
 
 .title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -44,14 +44,14 @@
 
 .inputText {
   color: gray;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: medium;
   font-weight: 500;
 }
 
 .inputParagraph {
   color: rgb(179, 178, 178);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: medium;
   font-weight: 300;
   margin-top: -17px;
@@ -63,14 +63,14 @@
 }
 
 .fileP {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .uploadButton {
   border: none;
   background-color: blueviolet;
   color: white;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: medium;
   font-weight: 300;
   padding: 7px;
@@ -80,3 +80,5 @@
 .uploadButton:hover {
   cursor: pointer;
 }
+
+/* https://soundcloud.com/jacqueswebsterxx/jb2-pressure?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing */
