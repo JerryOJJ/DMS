@@ -19,11 +19,16 @@ function Login() {
             <label className={styles.labels}>Password</label>
           </div>
         </div>
-        <a href="#">Forgot Password?</a>
+        <a className={styles.ancor} href="#">
+          Forgot Password?
+        </a>
         <br />
         <button className={styles.submit}>Login</button>
-        <p className={styles.paragraph}>
-          Don't have an account? <Link to="/signin">Sign In</Link>
+        <p>
+          Don't have an account?{' '}
+          <Link className={styles.paragraph} to="/signin">
+            Sign In
+          </Link>
         </p>
       </div>
     </div>

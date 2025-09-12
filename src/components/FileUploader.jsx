@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Client, ID, Storage } from 'appwrite';
 import { FaUpload } from 'react-icons/fa';
 import styles from '../styles/FileUploader.module.css';
@@ -64,7 +65,7 @@ function FileUploader() {
           <FaUpload className={styles.icon} />
           <br />
           <h3 className={styles.inputText}>Select files to upload</h3>
-          {/* <p className={styles.inputParagraph}>PDF and DOCX formats.</p> */}
+          {/* <p PDF and DOCX formats.</p> */}
 
           <input
             className={styles.input}
@@ -107,6 +108,12 @@ function FileUploader() {
         {status === 'success' && (
           <p style={{ color: 'blueviolet' }}>File uploaded successfully!</p>
         )}
+
+        <p>
+          <Link className={styles.inputParagraph} to="/filelist">
+            View Files--
+          </Link>
+        </p>
 
         {status === 'error' && (
           <p style={{ color: 'red' }}>File upload failed. Please try again.</p>

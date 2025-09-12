@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../styles/SignIn.module.css';
 import {
   FaLaptop,
@@ -33,7 +34,9 @@ function SignIn() {
               <br />
               <input className={styles.inputs} type="password" required />
             </div>
-            <button className={styles.submit}>Submit</button>
+            <button className={styles.submit}>
+              <Link to="/fileuploader">Submit</Link>
+            </button>
           </div>
         </div>
       </div>

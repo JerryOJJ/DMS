@@ -65,7 +65,7 @@
   transition: all 0.3s ease;
 }
 
-a {
+.ancor {
   text-decoration: none;
   color: white;
   text-align: right;
@@ -91,4 +91,5 @@ a {
 
 .paragraph {
   color: white;
+  text-decoration: none;
 }

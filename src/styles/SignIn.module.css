@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .all {
   position: fixed;
@@ -21,7 +21,7 @@
 }
 
 .leftTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   font-size: 60px;
   font-weight: bold;
@@ -44,7 +44,7 @@
 }
 
 .rightTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   font-size: 35px;
   font-weight: bold;
@@ -57,7 +57,7 @@
 }
 
 .labels {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
   font-size: 15px;
   font-weight: bold;
