@@ -23,18 +23,21 @@ function Filelist() {
     },
   ]);
   const [showPopup, setShowPopup] = useState(false);
-  const [handleSubmit, setHandleSubmit] = useState('');
+  const [newName, setNewName] = useState('');
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
+  function handleNewName(data) {
+    setNewName(data);
+  }
 
-  const handleSubmitFuction = (fileId, formData) => {
-    storage.updateFile('6878faea0025c2234e78', fileId, formData);
+  const updateName = (fileId) => {
+    storage.updateFile('6878faea0025c2234e78', fileId, newName);
     setShowPopup(false);
-  };
+    // window.location.reload();
 
-  setHandleSubmit(handleSubmitFuction);
+    console.log(fileId);
+  };
+  console.log(files);
+
   useEffect(() => {
     storage
       .listFiles('6878faea0025c2234e78')
@@ -46,7 +49,7 @@ function Filelist() {
           type: datum.mimeType,
           size: datum.sizeOriginal,
           id: storage.getFileView('6878faea0025c2234e78', datum.$id),
-          fileId: datum.id,
+          fileId: datum.$id,
         }));
 
         setFiles(files);
@@ -66,7 +69,6 @@ function Filelist() {
   //     console.warn('Text-to-Speech not supported in this browser.');
   //   }
   // } ;
-  console.log(showPopup);
 
   return (
     <div className={styles.all}>
@@ -92,7 +94,7 @@ function Filelist() {
         </thead>
         <tbody>
           {files.map((file) => (
-            <tr key={file.name}>
+            <tr key={file.fileId}>
               <td>{file.name}</td>
               <td>{file.type}</td>
               <td>{Math.round(file.size / 1000)}KB</td>
@@ -110,17 +112,27 @@ function Filelist() {
                 </a>
               </td>
               <td>
-                <button className={styles.button} onClick={file.edit}>
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    console.log(file.fileId);
+                    setShowPopup(true);
+                  }}
+                >
                   <FontAwesomeIcon icon={faPenToSquare} />
                   Rename
                 </button>
                 {showPopup && (
                   <PopupForm
-                    onClose={togglePopup}
-                    onSubmit={(formData) => handleSubmit(file.fileId, formData)}
+                    onClose={() => setShowPopup(false)}
+                    formData={handleNewName}
+                    set={() => {
+                      updateName(file.fileId);
+                      //console.log(file.fileId);
+                    }}
                   />
                 )}
-              </td>{' '}
+              </td>
               {/* <td>{speak()}</td> */}
             </tr>
           ))}
