@@ -1,36 +1,31 @@
-import { React, useState } from 'react';
-import styles from '../styles/Rename.module.css';
-function PopupForm({ formData, onClose, set }) {
-  const [data, setData] = useState('');
+import { React, useState } from "react";
+import styles from "../styles/Rename.module.css";
 
-  const handleInputChange = (e) => {
-    setData(e.target.value);
-  };
+function PopupForm({ onClose, onSubmit }) {
+  const [data, setData] = useState("");
 
   const handleSubmit = (e) => {
-    formData(data);
+    e.preventDefault();
+    onSubmit(data); // pass new name directly
   };
+
   return (
     <div className={styles.popupOverlay}>
       <div className={styles.popupContent}>
         <h2 className={styles.title}>Rename</h2>
-        <form onSubmit={set}>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Enter Name"
             value={data}
-            onChange={handleInputChange}
+            onChange={(e) => setData(e.target.value)}
             className={styles.input}
           />
           <div className={styles.buttons}>
-            <button className={styles.closeBtn} onClick={onClose}>
+            <button type="button" className={styles.closeBtn} onClick={onClose}>
               Cancel
             </button>
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              onClick={handleSubmit}
-            >
+            <button type="submit" className={styles.submitBtn}>
               OK
             </button>
           </div>
@@ -39,4 +34,5 @@ function PopupForm({ formData, onClose, set }) {
     </div>
   );
 }
+
 export default PopupForm;
