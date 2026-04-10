@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Client, ID, Storage } from 'appwrite';
-import { FaUpload } from 'react-icons/fa';
-import styles from '../styles/FileUploader.module.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Client, ID, Storage } from "appwrite";
+import { FaUpload } from "react-icons/fa";
+import styles from "../styles/FileUploader.module.css";
 
 function FileUploader() {
   const [file, setFile] = useState(null);
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState("idle");
   const [uploadProgress, setUploadProgress] = useState(0);
 
   function handleFileChange(e) {
@@ -17,25 +17,25 @@ function FileUploader() {
 
   const handleFileUpload = async () => {
     if (!file) {
-      alert('Please select a file first!');
+      alert("Please select a file first!");
       return;
     }
 
     //APPWRITE
     const client = new Client()
-      .setEndpoint('https://cloud.appwrite.io/v1')
-      .setProject('6878fa3b002c3376bb13');
+      .setEndpoint("https://cloud.appwrite.io/v1")
+      .setProject("6878fa3b002c3376bb13");
 
     const storage = new Storage(client);
 
-    setStatus('uploading');
+    setStatus("uploading");
     setUploadProgress(0);
 
     try {
       const promise = await (storage.createFile(
-        '6878faea0025c2234e78',
+        "6878faea0025c2234e78",
         ID.unique(),
-        file
+        file,
       ),
       {
         onUploadProgress: (ProgressEvent) => {
@@ -47,12 +47,12 @@ function FileUploader() {
       });
       console.log(promise);
 
-      setStatus('success');
+      setStatus("success");
       setUploadProgress(100);
     } catch (error) {
       console.log(error.message);
 
-      setStatus('failed');
+      setStatus("failed");
       setUploadProgress(0);
     }
   };
@@ -82,31 +82,59 @@ function FileUploader() {
             </div>
           )}
 
-          {file && status !== 'uploading' && (
+          {file && status !== "uploading" && (
             <button className={styles.uploadButton} onClick={handleFileUpload}>
               Upload
             </button>
           )}
         </div>
 
-        {status === 'uploading' && (
-          <div style={{ marginTop: '10px' }}>
-            <div style={{ width: '100%', height: '10px' }}>
+        {status === "uploading" && (
+          <div style={{ marginTop: "20px", padding: "0 10px", width: "100%" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "8px",
+                backgroundColor: "#e0e0e0",
+                borderRadius: "4px",
+                overflow: "hidden",
+                marginBottom: "12px",
+              }}
+            >
               <div
                 style={{
                   width: `${uploadProgress}%`,
-                  height: '10px',
-                  backgroundColor: 'blueviolet',
-                  transition: 100,
+                  height: "100%",
+                  backgroundColor: "blueviolet",
+                  transition: "width 0.3s ease",
                 }}
               ></div>
             </div>
-            <p>{uploadProgress}% uploaded</p>
+            <p
+              style={{
+                marginTop: "8px",
+                marginBottom: "0",
+                fontSize: "clamp(12px, 3vw, 14px)",
+                color: "#666",
+                textAlign: "center",
+              }}
+            >
+              {uploadProgress}% uploaded
+            </p>
           </div>
         )}
 
-        {status === 'success' && (
-          <p style={{ color: 'blueviolet' }}>File uploaded successfully!</p>
+        {status === "success" && (
+          <p
+            style={{
+              color: "blueviolet",
+              fontSize: "clamp(14px, 3vw, 16px)",
+              marginTop: "20px",
+              fontWeight: "500",
+            }}
+          >
+            File uploaded successfully!
+          </p>
         )}
 
         <p>
@@ -115,8 +143,17 @@ function FileUploader() {
           </Link>
         </p>
 
-        {status === 'error' && (
-          <p style={{ color: 'red' }}>File upload failed. Please try again.</p>
+        {status === "error" && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "clamp(14px, 3vw, 16px)",
+              marginTop: "20px",
+              fontWeight: "500",
+            }}
+          >
+            File upload failed. Please try again.
+          </p>
         )}
       </div>
     </div>
