@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import SignIn from './components/SignIn';
-import FileUploader from './components/FileUploader';
-import FileList from './components/FileList';
-import Menu from './components/menu';
+import React from "react";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import SignIn from "./components/SignIn";
+import FileUploader from "./components/FileUploader";
+import FileList from "./components/FileList";
+import Menu from "./components/menu";
 
 function App() {
   return (
