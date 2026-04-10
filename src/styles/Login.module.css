@@ -2,11 +2,14 @@
   display: block;
   background-image: url(../images/WP.jpg);
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 }
 
 .card {
@@ -14,28 +17,33 @@
   margin: auto;
   text-align: center;
   margin-top: 10%;
-  width: 25%;
+  width: 90%;
+  max-width: 450px;
   height: max-content;
   border: 2px solid white;
   border-radius: 20px;
   backdrop-filter: blur(5px);
+  padding-bottom: 20px;
 }
 
 .title {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   font-weight: lighter;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
 .wrapper {
-  padding: 30px;
+  padding: 20px;
 }
 
 .wrapper .inputdata {
   height: 40px;
   width: 100%;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .wrapper .inputdata .inputs {
@@ -43,10 +51,11 @@
   width: 100%;
   border: none;
   outline: none;
-  font-size: 17px;
+  font-size: clamp(14px, 4vw, 17px);
   border-bottom: 2px solid silver;
   background-color: transparent;
   color: white;
+  padding: 5px 0;
 }
 
 .inputdata .inputs:focus ~ .labels,
@@ -63,33 +72,74 @@
   color: white;
   pointer-events: none;
   transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .ancor {
   text-decoration: none;
   color: white;
   text-align: right;
+  font-size: clamp(12px, 3vw, 14px);
+  display: block;
+  margin: 15px 20px 0 0;
 }
 
 .submit {
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 40px;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   background-color: white;
   width: 70%;
-  height: 40px;
+  min-height: 44px;
   margin-top: 25px;
+  cursor: pointer;
+  font-size: clamp(14px, 4vw, 16px);
+  transition: all 0.3s ease;
 }
 
 .submit:hover {
-  cursor: pointer;
   background-color: blueviolet;
   color: white;
-  transition: 0.5s;
+  transform: translateY(-2px);
+}
+
+.submit:active {
+  transform: translateY(0);
 }
 
 .paragraph {
-  color: white;
+  color: blueviolet;
   text-decoration: none;
+  font-size: clamp(12px, 3vw, 14px);
+  margin-top: 20px;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .card {
+    width: 70%;
+    margin-top: 8%;
+    max-width: 550px;
+  }
+
+  .wrapper {
+    padding: 30px;
+  }
+
+  .submit {
+    min-height: 45px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 40%;
+    max-width: 500px;
+    margin-top: 12%;
+  }
+
+  .wrapper {
+    padding: 40px;
+  }
 }
