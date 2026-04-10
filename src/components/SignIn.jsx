@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/SignIn.module.css';
-import {
-  FaLaptop,
-  FaNetworkWired,
-  FaFileAlt,
-  FaGlobe,
-  FaShareSquare,
-} from 'react-icons/fa';
 
 function SignIn() {
   return (
@@ -15,11 +8,6 @@ function SignIn() {
       <div className={styles.container}>
         <div className={styles.leftcard}>
           <h1 className={styles.leftTitle}>Welcome!</h1>
-          <FaLaptop className={styles.icons} size={33} />
-          <FaNetworkWired className={styles.icons} size={33} />
-          <FaFileAlt className={styles.icons} size={33} />
-          <FaGlobe className={styles.icons} size={33} />
-          <FaShareSquare className={styles.icons} size={33} />
         </div>
         <div className={styles.rightcard}>
           <div className={styles.card}>
